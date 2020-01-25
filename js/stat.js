@@ -33,32 +33,31 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
 
-ctx.fillStyle = '#000';
-ctx.font = FONT_SIZE + 'px PT Mono';
-ctx.fillText('Ура вы победили!', statX, statY);
-ctx.fillText('Список результатов:', statX, statY + LINE_HEIGHT);
+  ctx.fillStyle = '#000';
+  ctx.font = FONT_SIZE + 'px PT Mono';
+  ctx.fillText('Ура вы победили!', statX, statY);
+  ctx.fillText('Список результатов:', statX, statY + LINE_HEIGHT);
 
-var maxTime = getMaxElement(times);
-var currentBarHeight;
-var histogramY = statY + LINE_HEIGHT + FONT_SIZE + VERTICAL_MARGIN;
+  var maxTime = getMaxElement(times);
+  var currentBarHeight;
+  var histogramY = statY + LINE_HEIGHT + FONT_SIZE + VERTICAL_MARGIN;
 
+  for (var i = 0; i < names.length; i++) {
+    currentBarHeight = BAR_MAX_HEIGHT * Math.round(times[i]) / maxTime;
 
- for (var i = 0; i < names.length; i++) {
-   currentBarHeight = BAR_MAX_HEIGHT * Math.round(times[i])/ maxTime;
-
-   ctx.fillStyle = '#000';
-   ctx.textBaseline = 'hanging';
-   ctx.fillText(Math.round(times[i]), statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + BAR_MAX_HEIGHT - currentBarHeight);
-   ctx.textBaseline = 'bottom';
-   ctx.fillText(names[i], statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT + LINE_HEIGHT);
+    ctx.fillStyle = '#000';
+    ctx.textBaseline = 'hanging';
+    ctx.fillText(Math.round(times[i]), statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + BAR_MAX_HEIGHT - currentBarHeight);
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(names[i], statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT + LINE_HEIGHT);
 
    if (names[i] === 'Вы') {
-     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-   } else {
-     ctx.fillStyle = 'hsl(240, ' + Math.round(getRandomNum(0, 100)) + '%, 50%)';
-   }
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+      } else {
+    ctx.fillStyle = 'hsl(240, ' + Math.round(getRandomNum(0, 100)) + '%, 50%)';
+      }
 
-   ctx.fillRect(statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT - currentBarHeight, BAR_WIDTH, currentBarHeight);
+    ctx.fillRect(statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT - currentBarHeight, BAR_WIDTH, currentBarHeight);
  }
 
 };
