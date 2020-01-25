@@ -51,13 +51,13 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.textBaseline = 'bottom';
     ctx.fillText(names[i], statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT + LINE_HEIGHT);
 
-   if (names[i] === 'Вы') {
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-      } else {
-    ctx.fillStyle = 'hsl(240, ' + Math.round(getRandomNum(0, 100)) + '%, 50%)';
-      }
+    if (names[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = 'hsl(240, ' + Math.round(getRandomNum(0, 100)) + '%, 50%)';
+    }
 
     ctx.fillRect(statX + (BAR_WIDTH + BAR_MARGIN) * i, histogramY + LINE_HEIGHT + BAR_MAX_HEIGHT - currentBarHeight, BAR_WIDTH, currentBarHeight);
- }
+  }
 
 };
