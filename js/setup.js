@@ -15,7 +15,7 @@ var wizardsFeatures = {
     'Люпита',
     'Вашингтон'
   ],
-  SURNAME:[
+  SURNAME: [
     'да Марья',
     'Верон',
     'Мирабелла',
@@ -34,11 +34,11 @@ var wizardsFeatures = {
     'rgb(0, 0, 0)'
   ],
   EYES_COLOR: [
-   'black',
-   'red',
-   'blue',
-   'yellow',
-   'green'
+    'black',
+    'red',
+    'blue',
+    'yellow',
+    'green'
   ],
 };
 
@@ -68,7 +68,7 @@ var renderWizard = function (wizard) {
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
-}
+};
 
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
