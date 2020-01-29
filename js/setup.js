@@ -72,9 +72,10 @@ var renderWizard = function (wizard) {
 
 var fragment = document.createDocumentFragment();
 
-for (i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
-}
+wizards.forEach(function(wizards) {
+  fragment.appendChild(renderWizard(wizards));
+});
+
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
