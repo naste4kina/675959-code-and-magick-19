@@ -72,7 +72,7 @@ var renderWizard = function (wizard) {
 
 var fragment = document.createDocumentFragment();
 
-wizards.forEach( function(wizard) {
+wizards.forEach(function (wizard) {
   fragment.appendChild(renderWizard(wizard));
 });
 
