@@ -55,7 +55,7 @@ var getRandomItem = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-var generateWizards = function(wizardsFeatures) {
+var generateWizards = function () {
   var wizards = [];
   for (var i = 0; i < wizardsFeatures.QUANTITY; i++) {
     wizards.push({
@@ -63,13 +63,13 @@ var generateWizards = function(wizardsFeatures) {
       coatColor: getRandomItem(wizardsFeatures.COAT_COLOR),
       eyesColor: getRandomItem(wizardsFeatures.EYES_COLOR)
     });
-}
-return wizards;
+  }
+  return wizards;
 };
 
 
 var createWizard = function (template, wizard) {
-  var wizardElement = template.cloneNode(true)
+  var wizardElement = template.cloneNode(true);
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
@@ -85,17 +85,17 @@ var getWizards = function (wizards) {
     fragment.appendChild(createWizard(similarWizardTemplate, wizard));
   });
   return fragment;
-}
+};
 
 var renderSimilarWizard = function () {
   var wizards = generateWizards(wizardsFeatures);
   var similarWizards = getWizards(wizards);
-  var wizardContainer = document.querySelector('.setup-similar')
+  var wizardContainer = document.querySelector('.setup-similar');
   var similarListElement = wizardContainer.querySelector('.setup-similar-list');
   similarListElement.appendChild(similarWizards);
   wizardContainer.classList.remove('hidden');
-}
-renderSimilarWizard ();
+};
+renderSimilarWizard();
 
 // открытие окна
 
@@ -107,16 +107,16 @@ var closeWindow = setupWindow.querySelector('.setup-close');
 var escPress = function (evt) {
   if (evt.keyCode === KeyCodes.ESC && evt.target !== wizardName) {
     closeSetup();
-}
+  }
 };
 
 var openSetup = function () {
   setupWindow.classList.remove('hidden');
-  document.addEventListener('keydown', escPress)
+  document.addEventListener('keydown', escPress);
 };
 var closeSetup = function () {
   setupWindow.classList.add('hidden');
-  document.removeEventListener('keydown', escPress)
+  document.removeEventListener('keydown', escPress);
 };
 openWindow.addEventListener('click', openSetup);
 openWindow.addEventListener('keydown', function (evt) {
@@ -129,7 +129,7 @@ closeWindow.addEventListener('keydown', function (evt) {
   if (evt.keyCode === KeyCodes.ENTER) {
     closeSetup();
   }
-  });
+});
 
 // валидация
 
