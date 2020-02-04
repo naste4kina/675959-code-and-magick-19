@@ -42,7 +42,7 @@ var wizardsFeatures = {
     'yellow',
     'green'
   ],
-  FEREBALL_COLORS: [
+  FIREBALL_COLOR: [
     '#ee4830',
     '#30a8ee',
     '#5ce6c0',
@@ -130,3 +130,33 @@ closeWindow.addEventListener('keydown', function (evt) {
     closeSetup();
   }
   });
+
+// валидация
+
+wizardName.addEventListener('invalid', function () {
+  if (wizardName.validity.tooShort) {
+    wizardName.setCustomValidity('В имени должно быть минимум 2 символа');
+  } else if (wizardName.validity.tooLong) {
+    wizardName.setCustomValidity('В имени должно быть не более 25 символов');
+  } else if (wizardName.validity.valueMissing) {
+    wizardName.setCustomValidity('Заполните это поле');
+  }
+});
+
+// настройка
+var wizardCoat = setupWindow.querySelector('.wizard-coat');
+var wizardEyes = setupWindow.querySelector('.wizard-eyes');
+var wizardFireball = setupWindow.querySelector('.setup-fireball-wrap');
+
+var setRandomCoatColor = function () {
+  wizardCoat.style.fill = getRandomItem(wizardsFeatures.COAT_COLOR);
+};
+var setRandomEyesColor = function () {
+  wizardEyes.style.fill = getRandomItem(wizardsFeatures.EYES_COLOR);
+};
+var setRandomFireballColor = function () {
+  wizardFireball.style.background = getRandomItem(wizardsFeatures.FIREBALL_COLOR);
+};
+wizardCoat.addEventListener('click', setRandomCoatColor);
+wizardEyes.addEventListener('click', setRandomEyesColor);
+wizardFireball.addEventListener('click', setRandomFireballColor);
